@@ -8,10 +8,7 @@ export async function sendMessage(
   sessionId: string,
   userName: string,
 ): Promise<ChatResponse> {
-  const url = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
-  if (!url) throw new Error('NEXT_PUBLIC_N8N_WEBHOOK_URL não configurada');
-
-  const res = await fetch(url, {
+  const res = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, sessionId, userName }),
